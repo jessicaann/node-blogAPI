@@ -71,7 +71,7 @@ router.put('/:id', jsonParser, (req, res) => {
     content: req.body.content,
     author: req.body.author
   });
-  res.status(204).json(updatedItem);
+  res.status(200).json(updatedItem);
 })
 
 module.exports = router;
