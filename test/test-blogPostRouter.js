@@ -52,14 +52,14 @@ describe('BlogPosts', function(){
 		.then(function(res) {
 			updatePost.id = res.body[0].id;
 			return chai.request(app)
-			.put('/blog-posts/${updatePost.id}')
+			.put(`/blog-posts/${updatePost.id}`)
 			.send(updatePost)
 		})
 		.then(function(res) {
 			res.should.have.status(200);
 			res.should.be.json;
 			res.body.should.be.a('object');
-			res.body.should.deep.equal(updatePost);
+			res.body.should.be.deep.equal(Object.assign(updatePost, {id: res.body.id, publishDate: res.body.publishDate}));
 		});
 	});
 	it('should delete a post on DELETE', function() {
@@ -67,7 +67,7 @@ describe('BlogPosts', function(){
 		.get('/blog-posts')
 		.then(function(res) {
 			return chai.request(app)
-			.delete('/blog-posts/${res.body.id}');
+			.delete(`/blog-posts/${res.body.id}`);
 		})
 		.then(function(res) {
 			res.should.have.status(204);
