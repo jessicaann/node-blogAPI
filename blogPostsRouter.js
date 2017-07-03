@@ -1,11 +1,11 @@
-const express = require('express');
-const router = express.Router();
+//const express = require('express');
+//const router = express.Router();
 
-const bodyParser = require('body-parser');
-const jsonParser = bodyParser.json();
+//const bodyParser = require('body-parser');
+//const jsonParser = bodyParser.json();
 
 
-const {BlogPosts} = require('./models');
+//const {BlogPosts} = require('./models');
 
 //BlogPosts.create(
 //	"I Love Concerts",
@@ -23,7 +23,7 @@ const {BlogPosts} = require('./models');
 //      "Lisa Ann"
 //);
 //GET
-router.get('/', (req, res) => {
+/*router.get('/', (req, res) => {
 	res.json(BlogPosts.get());
 });
 //CREATE
