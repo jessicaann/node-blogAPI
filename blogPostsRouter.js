@@ -7,21 +7,21 @@ const jsonParser = bodyParser.json();
 
 const {BlogPosts} = require('./models');
 
-BlogPosts.create(
-	"I Love Concerts",
-      "I've been to many concerts and I've enjoyed them all.",
-      "Jessica Ann"
-);
-BlogPosts.create(
-	"Do you love music?",
-      "Music rocks!",
-      "Sabre Ann"
-);
-BlogPosts.create(
-	"My favorite band",
-      "Today, I'll tell you my fav band.",
-      "Lisa Ann"
-);
+//BlogPosts.create(
+//	"I Love Concerts",
+//      "I've been to many concerts and I've enjoyed them all.",
+//      "Jessica Ann"
+//);
+//BlogPosts.create(
+//	"Do you love music?",
+//      "Music rocks!",
+//      "Sabre Ann"
+//);
+//BlogPosts.create(
+//	"My favorite band",
+//      "Today, I'll tell you my fav band.",
+//      "Lisa Ann"
+//);
 //GET
 router.get('/', (req, res) => {
 	res.json(BlogPosts.get());
