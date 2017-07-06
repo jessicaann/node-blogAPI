@@ -5,12 +5,10 @@ const blogpostSchema = mongoose.Schema({
   title: {type: String, required: true},
   content: {type: String, required: true},
   author: {
-    required: true,
-    //^Is this how I make this required?
     firstName: String,
     lastName: String
   },
-  publishDate: publishDate || Date.now()
+  publishDate: {type: Date, default: Date.now}
 });
 
 //Virtuals
@@ -21,6 +19,7 @@ blogpostSchema.virtual('authorString').get(function() {
 //The thing that tells the API what info to reveal
 blogpostSchema.methods.apiRev = function() {
   return {
+    id: this._id,
     title: this.title,
     content: this.content,
     author: this.authorString,
@@ -28,7 +27,7 @@ blogpostSchema.methods.apiRev = function() {
   };
 }
 
-const BlogPosts = mongoose.model('BlogPosts', blogpostSchema);
-
+const BlogPosts = mongoose.model('blogpost', blogpostSchema);
+//^ in the string  is the name of the collection in the db
 module.exports = {BlogPosts};
 
