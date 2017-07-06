@@ -63,7 +63,8 @@ describe('BlogPosts API resource', function() {
 					return BlogPosts.count();
 				})
 				.then(function(count) {
-					res.body.should.have.length.of(count);
+					//res.body.length.should.equal(count);
+					res.body.should.have.lengthOf(count);
 				});
 		});
 		it('should return blog posts with correct fields', function() {
@@ -105,17 +106,17 @@ describe('BlogPosts API resource', function() {
 				res.body.should.include.keys('id', 'title', 'content', 'author');
 				res.body.title.should.equal(newBlogPost.title);
 				res.body.id.should.not.be.null;
-				console.log(res.body.author);
-				console.log(newBlogPost);
-				res.body.author.should.equal(newBlogPost.authorString); //We would need to importa virtual to make this work?
+				res.body.author.should.equal(newBlogPost.author.firstName + ' ' + newBlogPost.author.lastName); //We would need to importa virtual to make this work?
 				res.body.content.should.equal(newBlogPost.content);
 
-				return BlogPost.findById(res.body.id); //<--Im confused about if this is
+				return BlogPosts.findById(res.body.id); //<--Im confused about if this is
 				//referring the model or what?
 			})
 			.then(function(blogpost) {
+				console.log(blogpost);
 				blogpost.title.should.equal(newBlogPost.title);
-				blogpost.author.should.equal(newBlogPost.authorString);
+				blogpost.author.firstName.should.equal(newBlogPost.author.firstName);
+				blogpost.author.lastName.should.equal(newBlogPost.author.lastName);
 				blogpost.content.should.equal(newBlogPost.content);
 			});
 		});

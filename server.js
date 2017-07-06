@@ -22,7 +22,7 @@ app.use(bodyParser.json())
 app.get('/posts', (req, res) => {
   BlogPosts
     .find()
-    .limit(5)
+    .limit(10)
     .exec()
     .then(posts => {
       res.json(posts.map(
